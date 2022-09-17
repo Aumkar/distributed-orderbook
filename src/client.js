@@ -61,6 +61,7 @@ console.log('Setting up server...');
 await setTimeout(500);
 
 const handleError = err => {
+  // Ignoring `ERR_GRAPE_LOOKUP_EMPTY` for first client
   if (err && err.message !== 'ERR_GRAPE_LOOKUP_EMPTY') {
     console.error(err);
     process.exit(-1);
@@ -111,7 +112,6 @@ const syncOrders = async () => {
         console.log('INITIAL STATE SET TO: ', initialData);
         console.log('=================================');
         resolve();
-        // inputOrder();
       }
     );
   });

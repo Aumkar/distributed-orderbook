@@ -36,7 +36,7 @@ yarn run client
 ## Implementation:
 
 - Each client has its own PeerClient and PeerServer.
-- So each client also add new data and listens for changes made by other client.
+- So each client add new data and listens for changes made by other client.
 - Whenever any client wants to add new record:
   - It tries to acquire lock
   - Once aquired it generates order body and broadcasts it to all connected clients.
@@ -45,7 +45,7 @@ yarn run client
 
 ## Limitation/Issues:
 
-- Locking mechanism is not very reliable atm. There are some issues when doing initial sync for new client added.
-- Adding entries from multiple clients simultaneously end up having inonsistencies some times.
+- Locking mechanism can be improved. There are some issues when doing initial sync for new client added.
+- I mainly focused on syncing DS changes to multiple clients efficiently, so counldn't give much time OrederBook class. It can be extended further for order's costing related logic.
 - Code from client.js could be further refactored.
 - console.log should be replaced with debug/info logs.

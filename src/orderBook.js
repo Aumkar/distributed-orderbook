@@ -18,14 +18,23 @@ export class OrderBook {
     return this.data;
   }
   setData(orders) {
-    this.data = orders;
+    this.data = [...orders];
   }
   addOrder(order) {
-    this.data.push(order);
+    const index = this.data.findIndex(i => i.id === order.id);
+    if (index < 0) {
+      this.data.push(order);
+      return;
+    }
+    this.data[index] = {
+      ...this.data[index],
+      ...order,
+    };
   }
 
   generateOrder() {
     return {
+      id: this.data.length + 1,
       itemName: ITEM_NAMES[randomize() % ITEM_NAMES.length],
       quantity: randomize(),
       action: ACTION_NAMES[randomize() % ACTION_NAMES.length],

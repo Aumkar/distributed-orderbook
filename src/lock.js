@@ -11,7 +11,6 @@ export class Lock {
   }
 
   isLocked() {
-    console.log('1111111', this.clientIds);
     return this.clientIds.size > 0;
   }
 }
